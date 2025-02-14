@@ -21,7 +21,9 @@ public class Line {
 	public void draw(PApplet drawer)
 	{
 		drawer.stroke(color);
+		drawer.strokeWeight(16);
 		drawer.line(x, y, x2, y2);
+		// drawer.text(getX(), x, y2 - 20); // displays x-pos of line for debugging/testing purposes
 	}
 	
 	// GETTERS & SETTERS
@@ -50,5 +52,12 @@ public class Line {
 	public void setColor(Color color)
 	{
 		this.color = color.getRGB();
-;	}
+	}
+
+	public static void swapLines(Line l1, Line l2)
+	{
+		int temp = l1.getY();
+		l1.setY(l2.getY());
+		l2.setY(temp);
+	}
 }
