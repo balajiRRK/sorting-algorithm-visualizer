@@ -8,7 +8,7 @@ public class DrawingSurface extends PApplet {
 	
 	private Board board;
 	private int w, h, frameRate;
-	private boolean windowChanged, sort;
+	private boolean windowChanged, sort; // sorting
 	
 	public DrawingSurface() {
 		w = width;
@@ -48,25 +48,31 @@ public class DrawingSurface extends PApplet {
 		board.draw(this);
 		delay(1000/frameRate);
 
-		text("FPS Counter: " + frameRate, (float) (9.2/10) * width, (float) (0.15/10) * height);
+		textSize(25);
+		text("FPS Counter: " + frameRate, (float) (9.0/10) * width, (float) (0.3/10) * height);
 	}
 	
 	public void keyPressed() 
 	{
 		if (keyCode == KeyEvent.VK_LEFT)
 		{
+			sort = false;
+			board.clearSwaps();
 			board.changeAlgorithm("LEFT");
 		} else if (keyCode == KeyEvent.VK_RIGHT)
 		{
+			sort = false;
+			board.clearSwaps();
 			board.changeAlgorithm("RIGHT");
 		} else if (keyCode == KeyEvent.VK_R)
 		{
 			sort = false;
+			board.clearSwaps();
 			board.randomize(); 
 		} else if (keyCode == KeyEvent.VK_SPACE)
 		{
 			board.sort();
-			sort = true; 
+			sort = true;
 		} else if (keyCode == KeyEvent.VK_UP)
 		{
 			if (frameRate + 5 <= 90)

@@ -8,8 +8,8 @@ import processing.core.PApplet;
 
 public class Board {
 
-	private Line[] lines;
-	private Line[] linesCopy;
+	private Line[] lines; // list to be visually displayed with incremental sorting steps
+	private Line[] linesCopy; // list to be sorted by algorithm
 	private ArrayList<Integer> swaps;
 	private Algorithms algo;
 	private int algorithmIndex;
@@ -52,10 +52,11 @@ public class Board {
 			lines[random].setY(lines[i].getY());
 			lines[i].setY(tempY);
 
-			// same thing as above but for copy
-			tempY = linesCopy[random].getY();
-			linesCopy[random].setY(linesCopy[i].getY());
-			linesCopy[i].setY(tempY);
+			// copy linesCopy from lines instead of copying swapping coded since the two arrays may start out differently so swapping both would result in different randomizes
+			for (int j = 0; j < lines.length; j++)
+			{
+				linesCopy[j].setY(lines[j].getY());
+			}
 		} 
 
 		if (swaps != null) {
@@ -65,32 +66,35 @@ public class Board {
 
 	public void sort() 
 	{
+		if (swaps != null) {
+			swaps.clear(); // ensure swaps is empty to prevent any weird issues
+		}
+
 		String[] algosList = algo.getAlgorithmsList();
 
 		if (algosList[algorithmIndex] == "Bubble Sort")
 		{
-			for (int i = 0; i < linesCopy.length; i++)
-			{
-				System.out.println("linesCopy being sending to sort(): " + linesCopy[i].getY());
-				System.out.println("lines: " + lines[i].getY());
-			}
 			swaps = algo.bubbleSort(linesCopy);
-			// System.out.println("swaps after calling sort(): " + swaps);
-
 		} else if (algosList[algorithmIndex] == "Insertion Sort")
 		{
 			swaps = algo.insertionSort(linesCopy);
+		} else if (algosList[algorithmIndex] == "Merge Sort")
+		{
+			swaps = algo.mergeSort(linesCopy, 0, linesCopy.length - 1);
+		} else if (algosList[algorithmIndex] == "Quick Sort")
+		{
+			swaps = algo.quickSort(linesCopy, 0, linesCopy.length - 1);
+		} else if (algosList[algorithmIndex] == "Selection Sort")
+		{
+			swaps = algo.selectionSort(linesCopy);
 		}
 	}
 
 	public boolean swap()
 	{
-		// System.out.println("swaps before swap(): " + swaps);
 		if (swaps != null && swaps.size() > 1)
 		{
 			Line.swapLines(lines[swaps.remove(0)], lines[swaps.remove(0)]);
-			// ITS ONLY SWAPPING THE HEIGHTS OF THE LINES IN THE SWAPS LIST INSTEAD OF THE LINES[] ARRAY BEING DISPLAYED SO NOT SEEING UPDATE
-			System.out.println("swapped");
 			return true; // possibly not finished sorting
 		} else
 		{
@@ -135,11 +139,6 @@ public class Board {
 				lines[i].setColor(Color.BLACK);
 			}
 			lines[i].draw(drawer);
-
-			if (lines[i].getX() > 1894)
-			{
-				System.out.println("LINE OFFSCREEN LINE OFFSCREEN");
-			}
 		}
 	}
 
@@ -153,5 +152,12 @@ public class Board {
 	public Line[] getBoard()
 	{
 		return lines;
+	}
+
+	public void clearSwaps()
+	{
+		if (swaps != null) {
+			swaps.clear();
+		}
 	}
 }
