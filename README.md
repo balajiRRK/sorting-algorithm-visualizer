@@ -19,4 +19,4 @@ Command to run: `java -cp target\sorting-algorithms-visualizer-1.0-SNAPSHOT.jar;
 
 ## Demo
 
-https://github.com/user-attachments/assets/3935afea-4a8b-4ec4-9bb6-eaf825c58e03
+https://github.com/user-attachments/assets/af3d3bd8-c55f-4b76-9495-31d8e405bda2
