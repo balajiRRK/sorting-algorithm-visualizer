@@ -1,6 +1,6 @@
 # Sorting Algorithm Visualizer Application
 
-A program that helps the user visualize the time complexity differences between multiple different sorting algorithms.
+A program that helps the user visualize the functionality and efficiency differences between multiple different sorting algorithms.
 
 ## Instructions to run program
 
