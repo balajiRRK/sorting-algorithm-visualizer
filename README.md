@@ -6,7 +6,7 @@ A program that helps the user visualize the time complexity differences between 
 
 Run only on CMD, not Powershell
 
-Command to rebuild project if any code changes were made: `mvn clean install`   // `mvn clean compile` will NOT work
+Command to rebuild project if any code changes were made: `mvn clean install`
 
 Command to run: `java -cp target\sorting-algorithms-visualizer-1.0-SNAPSHOT.jar;lib\processingcore.jar main.Main`
 
