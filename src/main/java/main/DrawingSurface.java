@@ -45,6 +45,7 @@ public class DrawingSurface extends PApplet {
 		{
 			sort = board.swap();
 		}
+
 		board.draw(this);
 		delay(1000/frameRate);
 
@@ -57,17 +58,17 @@ public class DrawingSurface extends PApplet {
 		if (keyCode == KeyEvent.VK_LEFT)
 		{
 			sort = false;
-			board.clearSwaps();
+			board.reset();
 			board.changeAlgorithm("LEFT");
 		} else if (keyCode == KeyEvent.VK_RIGHT)
 		{
 			sort = false;
-			board.clearSwaps();
+			board.reset();
 			board.changeAlgorithm("RIGHT");
 		} else if (keyCode == KeyEvent.VK_R)
 		{
 			sort = false;
-			board.clearSwaps();
+			board.reset();
 			board.randomize(); 
 		} else if (keyCode == KeyEvent.VK_SPACE)
 		{

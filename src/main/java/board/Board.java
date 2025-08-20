@@ -8,8 +8,8 @@ import processing.core.PApplet;
 
 public class Board {
 
-	private Line[] lines; // list to be visually displayed with incremental sorting steps
-	private Line[] linesCopy; // list to be sorted by algorithm
+	private Line[] lines; // list to be visually displayed with slow incremental sorting steps live
+	private Line[] linesCopy; // list to be sorted by algorithm instantly so that we can then store the swap steps from it and apply those to lines
 	private ArrayList<Integer> swaps;
 	private Algorithms algo;
 	private int algorithmIndex;
@@ -154,10 +154,16 @@ public class Board {
 		return lines;
 	}
 
-	public void clearSwaps()
+	public void reset()
 	{
 		if (swaps != null) {
 			swaps.clear();
+		}
+
+		// set linesCopy to lines values since if you switch mid-sorting to a new algo it wont sort since the linesCopy has already been sorted
+		for (int j = 0; j < lines.length; j++)
+		{
+			linesCopy[j].setY(lines[j].getY());
 		}
 	}
 }
