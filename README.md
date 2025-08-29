@@ -13,7 +13,7 @@ mvn clean install
 
 Command to run program: 
 ```
-java -cp target\sorting-algorithms-visualizer-1.0-SNAPSHOT.jar;lib\processingcore.jar main.Main`
+java -cp target\sorting-algorithms-visualizer-1.0-SNAPSHOT.jar;lib\processingcore.jar main.Main
 ```
 
 ## Instructions to interact with program:
@@ -26,3 +26,4 @@ java -cp target\sorting-algorithms-visualizer-1.0-SNAPSHOT.jar;lib\processingcor
 ## Demo
 
 https://github.com/user-attachments/assets/af3d3bd8-c55f-4b76-9495-31d8e405bda2
+
